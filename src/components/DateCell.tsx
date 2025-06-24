@@ -25,9 +25,9 @@ export const DateCell = ({ value, onChange }: DateCellProps) => {
   return (
     <StyledDatePicker
       value={dayjs(value)}
-      onChange={(newValue) => {
+      onChange={(newValue: any) => {
         if (newValue) {
-          onChange(newValue.format('M/D/YYYY'));
+          onChange(newValue.format('YYYY-MM-DD'));
         }
       }}
       slotProps={{

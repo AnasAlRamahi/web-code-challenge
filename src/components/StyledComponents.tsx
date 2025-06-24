@@ -49,3 +49,19 @@ export const SaveButton = styled.button`
     background: #1565c0;
   }
 `;
+
+export const SubmitButton = styled.button`
+  padding: 10px 20px;
+  background: #1976d2;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin: 20px;
+  &:hover {
+    background: #1565c0;
+  }
+  &:disabled {
+    background: #b0bec5;
+  }
+`;
