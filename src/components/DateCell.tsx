@@ -1,27 +1,28 @@
+import { styled } from '@mui/material/styles';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import dayjs from 'dayjs';
-import { styled } from '@mui/material/styles';
 
-interface DateCellProps {
+interface DateInputProps {
   value: string;
+  label: string;
   onChange: (value: string) => void;
 }
 
 const StyledDatePicker = styled(DatePicker)({
   '& .MuiInputBase-input': {
-    padding: '0',
-    border: 'none',
     background: 'transparent',
     cursor: 'pointer',
+    padding: '5px',
   },
   '& .MuiInputBase-root': {
+    backgroundColor: 'white',
     '&:before, &:after': {
       display: 'none',
     },
   },
 });
 
-export const DateCell = ({ value, onChange }: DateCellProps) => {
+export const DateInput = ({ value, label, onChange }: DateInputProps) => {
   return (
     <StyledDatePicker
       value={dayjs(value)}
@@ -30,10 +31,15 @@ export const DateCell = ({ value, onChange }: DateCellProps) => {
           onChange(newValue.format('YYYY-MM-DD'));
         }
       }}
+      label={label}
       slotProps={{
         textField: {
-          variant: 'standard',
+          variant: 'outlined',
           fullWidth: true,
+          error: false,
+          inputProps: {
+            title: value || '',
+          },
         },
       }}
     />

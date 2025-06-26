@@ -1,0 +1,162 @@
+[
+  {
+    "id": "0",
+    "type": "flight-destination",
+    "origin": "MAD",
+    "destination": "OPO",
+    "departureDate": "2025-10-30",
+    "returnDate": "2025-11-01",
+    "price": "54.05",
+    "flightDatesLink": "https://test.api.amadeus.com/v1/shopping/flight-dates?origin=MAD&destination=OPO&departureDate=2025-10-30,2025-11-01&oneWay=false&nonStop=false&viewBy=DESTINATION"
+  },
+  {
+    "id": "1",
+    "type": "flight-destination",
+    "origin": "ssss212d",
+    "destination": "YJB",
+    "departureDate": "2025-07-15",
+    "returnDate": "2025-07-23",
+    "price": "52.0",
+    "flightDatesLink": "https://test.api.amadeus.com/v1/shopping/flight-dates?origin=XOC&destination=YJB&departureDate=2025-07-15,2025-07-23&oneWay=false&nonStop=false&viewBy=DESTINATION"
+  },
+  {
+    "id": "2",
+    "type": "flight-destination",
+    "origin": "MAD",
+    "destination": "PMI",
+    "departureDate": "2025-10-18",
+    "returnDate": "2025-11-01",
+    "price": "56.21",
+    "flightDatesLink": "https://test.api.amadeus.com/v1/shopping/flight-dates?origin=MAD&destination=PMI&departureDate=2025-10-18,2025-11-01&oneWay=false&nonStop=false&viewBy=DESTINATION"
+  },
+  {
+    "id": "3",
+    "type": "flight-destination",
+    "origin": "MAD",
+    "destination": "LIS",
+    "departureDate": "2025-11-13",
+    "returnDate": "2025-11-15",
+    "price": "58.34",
+    "flightDatesLink": "https://test.api.amadeus.com/v1/shopping/flight-dates?origin=MAD&destination=LIS&departureDate=2025-11-13,2025-11-15&oneWay=false&nonStop=false&viewBy=DESTINATION"
+  },
+  {
+    "id": "4",
+    "type": "flight-destination",
+    "origin": "MAD",
+    "destination": "RAK",
+    "departureDate": "2025-09-04",
+    "returnDate": "2025-09-19",
+    "price": "69.75",
+    "flightDatesLink": "https://test.api.amadeus.com/v1/shopping/flight-dates?origin=MAD&destination=RAK&departureDate=2025-09-04,2025-09-19&oneWay=false&nonStop=false&viewBy=DESTINATION"
+  },
+  {
+    "id": "5",
+    "type": "flight-destination",
+    "origin": "MAD",
+    "destination": "FCO",
+    "departureDate": "2025-11-04",
+    "returnDate": "2025-11-19",
+    "price": "77.19",
+    "flightDatesLink": "https://test.api.amadeus.com/v1/shopping/flight-dates?origin=MAD&destination=FCO&departureDate=2025-11-04,2025-11-19&oneWay=false&nonStop=false&viewBy=DESTINATION"
+  },
+  {
+    "id": "6",
+    "type": "flight-destination",
+    "origin": "MAD",
+    "destination": "LPA",
+    "departureDate": "2025-09-17",
+    "returnDate": "2025-09-24",
+    "price": "96.67",
+    "flightDatesLink": "https://test.api.amadeus.com/v1/shopping/flight-dates?origin=MAD&destination=LPA&departureDate=2025-09-17,2025-09-24&oneWay=false&nonStop=false&viewBy=DESTINATION"
+  },
+  {
+    "id": "7",
+    "type": "flight-destination",
+    "origin": "MAD",
+    "destination": "ORY",
+    "departureDate": "2025-11-26",
+    "returnDate": "2025-11-29",
+    "price": "108.68",
+    "flightDatesLink": "https://test.api.amadeus.com/v1/shopping/flight-dates?origin=MAD&destination=ORY&departureDate=2025-11-26,2025-11-29&oneWay=false&nonStop=false&viewBy=DESTINATION"
+  },
+  {
+    "id": "8",
+    "type": "flight-destination",
+    "origin": "MAD",
+    "destination": "MXP",
+    "departureDate": "2025-08-07",
+    "returnDate": "2025-08-19",
+    "price": "122.13",
+    "flightDatesLink": "https://test.api.amadeus.com/v1/shopping/flight-dates?origin=MAD&destination=MXP&departureDate=2025-08-07,2025-08-19&oneWay=false&nonStop=false&viewBy=DESTINATION"
+  },
+  {
+    "id": "9",
+    "type": "flight-destination",
+    "origin": "MAD",
+    "destination": "LGW",
+    "departureDate": "2025-11-10",
+    "returnDate": "2025-11-13",
+    "price": "122.51",
+    "flightDatesLink": "https://test.api.amadeus.com/v1/shopping/flight-dates?origin=MAD&destination=LGW&departureDate=2025-11-10,2025-11-13&oneWay=false&nonStop=false&viewBy=DESTINATION"
+  },
+  {
+    "id": "10",
+    "type": "flight-destination",
+    "origin": "MAD",
+    "destination": "AMS",
+    "departureDate": "2025-07-24",
+    "returnDate": "2025-08-05",
+    "price": "142.85",
+    "flightDatesLink": "https://test.api.amadeus.com/v1/shopping/flight-dates?origin=MAD&destination=AMS&departureDate=2025-07-24,2025-08-05&oneWay=false&nonStop=false&viewBy=DESTINATION"
+  },
+  {
+    "id": "11",
+    "type": "flight-destination",
+    "origin": "MAD",
+    "destination": "CPH",
+    "departureDate": "2025-11-08",
+    "returnDate": "2025-11-10",
+    "price": "318.91",
+    "flightDatesLink": "https://test.api.amadeus.com/v1/shopping/flight-dates?origin=MAD&destination=CPH&departureDate=2025-11-08,2025-11-10&oneWay=false&nonStop=false&viewBy=DESTINATION"
+  },
+  {
+    "id": "12",
+    "type": "flight-destination",
+    "origin": "MAD",
+    "destination": "CPH",
+    "departureDate": "2025-11-11",
+    "returnDate": "2025-11-14",
+    "price": "358.91",
+    "flightDatesLink": "https://test.api.amadeus.com/v1/shopping/flight-dates?origin=MAD&destination=CPH&departureDate=2025-11-11,2025-11-14&oneWay=false&nonStop=false&viewBy=DESTINATION"
+  },
+  {
+    "id": "13",
+    "type": "flight-destination",
+    "origin": "MAD",
+    "destination": "LIS",
+    "departureDate": "2025-09-01",
+    "returnDate": "2025-09-13",
+    "price": "398.3",
+    "flightDatesLink": "https://test.api.amadeus.com/v1/shopping/flight-dates?origin=MAD&destination=LIS&departureDate=2025-09-01,2025-09-13&oneWay=false&nonStop=false&viewBy=DESTINATION"
+  },
+  {
+    "id": "14",
+    "type": "flight-destination",
+    "origin": "MAD",
+    "destination": "BOS",
+    "departureDate": "2025-08-25",
+    "returnDate": "2025-09-08",
+    "price": "490.03",
+    "flightDatesLink": "https://test.api.amadeus.com/v1/shopping/flight-dates?origin=MAD&destination=BOS&departureDate=2025-08-25,2025-09-08&oneWay=false&nonStop=false&viewBy=DESTINATION"
+  },
+  {
+    "id": "15",
+    "type": "flight-destination",
+    "origin": "MAD",
+    "destination": "AUH",
+    "departureDate": "2025-06-29",
+    "returnDate": "2025-07-06",
+    "price": "510.31",
+    "flightDatesLink": "https://test.api.amadeus.com/v1/shopping/flight-dates?origin=MAD&destination=AUH&departureDate=2025-06-29,2025-07-06&oneWay=false&nonStop=false&viewBy=DESTINATION"
+  }
+]

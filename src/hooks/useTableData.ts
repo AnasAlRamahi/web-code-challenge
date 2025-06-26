@@ -1,9 +1,14 @@
-import { useState, useEffect, useMemo } from 'react';
-import { TableData } from '../types/tableTypes';
-import data from '../data.json';
 import debounce from 'lodash/debounce';
+import { Dispatch, SetStateAction, useCallback, useEffect, useMemo, useState } from 'react';
+import { fetchFlightDestinations, getToken } from '../services/tableService';
+import staticData from '../staticFlightData.json';
+import { TableData } from '../types/tableTypes';
 
-export const useTableData = () => {
+interface UseTableDataProps {
+  setPage: Dispatch<SetStateAction<number>>;
+}
+
+export const useTableData = ({ setPage }: UseTableDataProps) => {
   const [tableData, setTableData] = useState<TableData[]>([]);
   const [editedCells, setEditedCells] = useState<Set<string>>(new Set());
   const [columnFilters, setColumnFilters] = useState<Record<string, string>>({});
@@ -13,107 +18,76 @@ export const useTableData = () => {
     const savedData = localStorage.getItem('tableData');
     if (savedData) {
       setTableData(JSON.parse(savedData));
-      getToken();
     } else {
-      getToken()
-        // getData('MAD');
+      setTableData(staticData as TableData[]);
     }
 
-    // getToken();
+    getToken().then(({ data, error }) => {
+      if (error) {
+        setErrorList(prev => [...prev, `Error fetching token: ${error}`]);
+      } else {
+        localStorage.setItem('accessToken', data.access_token);
+      }
+    });
   }, []);
 
-  const makeRequest = async ({ url, headers = {}, body = {}, method = 'GET' }: { url: string, headers: Record<string, string>, body: {}, method: string }) => {
-    try {
-      if (headers['Content-Type'] === 'application/x-www-form-urlencoded') {
-        const urlEncodedBody = new URLSearchParams(body as Record<string, string>).toString();
-        body = urlEncodedBody;
-      }
-      
-      const response = await fetch(url, {
-        method,
-        headers: {
-          'Content-Type': 'application/json',
-          ...headers,
-        },
-        body: method !== 'GET' ? (typeof body == "string" ? body : JSON.stringify(body)) : undefined,
-      });
+  const getData = useCallback(
+    async (code: string, date: string = '') => {
+      setErrorList([]);
+      setEditedCells(new Set());
 
-      if (!response.ok) {
-        setErrorList(prev => [...prev, `HTTP error! status: ${response.status}`]);
+      const accessToken = localStorage.getItem('accessToken');
+      if (!accessToken) {
+        setErrorList(prev => [...prev, 'No access token found.']);
+        return;
       }
 
-      const data = await response.json();
+      const { data, error } = await fetchFlightDestinations(accessToken, code, date);
+      if (error) {
+        setErrorList(prev => [...prev, `Error fetching data: ${error}`]);
+        setTableData([]);
+        return;
+      }
 
-      return data;
-
-    } catch (error) {
-      setErrorList(prev => [...prev, `Error making request: ${error}`]);
-    }
-  }
-
-  const getToken = () => {
-    makeRequest({
-      url: 'https://test.api.amadeus.com/v1/security/oauth2/token',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      body: {
-        'grant_type': 'client_credentials',
-        'client_id': 'WXhVX07Nsuy9MwvkHd1Z2ACwaoTjfUVi',
-        'client_secret': 'bo5TGAIJuUDxbgoG',
-      },
-      method: 'POST',
-    }).then(response => {
-      localStorage.setItem('accessToken', response.access_token);
-    }).catch(error => {
-      console.error('Error fetching token:', error);
-    });
-  }
-
-  const getData = async (code: string, date: string = '') => {
-    setErrorList([]);
-    // if (!localStorage.getItem('accessToken')) {
-    //   await getToken();
-    // }
-    
-    const url = 'https://test.api.amadeus.com/v1/shopping/flight-destinations?origin=' + (code ? code : 'MAD') + (date ? '&departureDate=' + date : '');
-    const accessToken = localStorage.getItem('accessToken');
-
-    makeRequest({
-      url: url,
-      headers: {
-        'Authorization': `Bearer ${accessToken}`,
-        'Accept': 'application/vnd.amadeus+json',
-        'Content-Type': 'application/vnd.amadeus+json',
-      },
-      body: {
-      },
-      method: 'GET',
-    }).then(response => {
-      const modifiedData = response?.data?.map(({links, ...rest} : any) => ({
+      const modifiedData = data?.data?.map(({ links, ...rest }: any, index: number) => ({
         ...rest,
-        flightDates: links?.flightDates,
+        flightDatesLink: links?.flightDates,
         price: rest.price?.total,
+        id: index,
       }) as TableData);
-      setTableData(modifiedData as TableData[]);
-    }); 
-    return data;
-  };
 
-  const saveChanges = () => {
+      setTableData(modifiedData as TableData[]);
+      setPage(0);
+    }, []);
+
+  const resetSearch = useCallback(() => {
+    const savedData = localStorage.getItem('tableData');
+    if (savedData) {
+      setTableData(JSON.parse(savedData));
+    } else {
+      setTableData([]);
+    }
+    setEditedCells(new Set());
+    setErrorList([]);
+    setPage(0);
+  }, []);
+
+  const saveChanges = useCallback(() => {
     localStorage.setItem('tableData', JSON.stringify(tableData));
     setEditedCells(new Set());
-  };
+  }, [tableData]);
 
-  const updateCell = (rowIndex: number, columnId: string, value: string) => {
+  const updateCell = useCallback((rowId: number, columnId: string, value: string) => {
+    const rowIndex = tableData.findIndex(row => Number(row.id) === rowId);
+    if (rowIndex === -1) return;
     const newData = [...tableData];
     newData[rowIndex] = {
       ...newData[rowIndex],
       [columnId]: value,
     };
     setTableData(newData);
-    setEditedCells(new Set(editedCells).add(`${rowIndex}-${columnId}`));
-  };
+    setEditedCells(new Set(editedCells).add(`${rowId}-${columnId}`));
+  }, [tableData, editedCells]);
 
   const debouncedFilter = useMemo(
     () =>
@@ -138,11 +112,15 @@ export const useTableData = () => {
 
   return {
     data: filteredData,
-    getData,
     editedCells,
     updateCell,
     saveChanges,
     debouncedFilter,
     errorList,
+    setTableData,
+    searchForm: {
+      getData,
+      resetSearch,
+    },
   };
 };
