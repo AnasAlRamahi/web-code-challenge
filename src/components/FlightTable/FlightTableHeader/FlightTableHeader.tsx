@@ -1,6 +1,6 @@
 import { memo } from 'react';
-import { camelCaseToNormalText } from '../utils/utils';
-import { SearchInput, TableHeader } from './StyledComponents';
+import { camelCaseToNormalText } from '../../../utils/utils';
+import { SearchInput, TableHeader } from '../../common/StyledComponents';
 
 interface FlightTableHeaderProps {
   columns: string[];

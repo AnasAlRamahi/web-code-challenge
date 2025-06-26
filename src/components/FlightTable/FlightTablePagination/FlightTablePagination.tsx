@@ -1,7 +1,7 @@
 import { TablePagination } from '@mui/material';
 import { memo } from 'react';
-import { TableData } from '../types/tableTypes';
-import { SaveButton } from './StyledComponents';
+import { TableData } from '../../../types/tableTypes';
+import { SaveButton } from '../../common/StyledComponents';
 
 interface FlightTablePaginationProps {
   columns: string[];

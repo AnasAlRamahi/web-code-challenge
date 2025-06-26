@@ -1,7 +1,7 @@
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from "@dnd-kit/utilities";
-import { DragHandle } from './HandleWrapper';
-import { TableCell } from './StyledComponents';
+import { DragHandle } from './DragHandle/DragHandle';
+import { TableCell } from '../../../common/StyledComponents';
 
 interface DraggableTableRowProps {
   id: number;

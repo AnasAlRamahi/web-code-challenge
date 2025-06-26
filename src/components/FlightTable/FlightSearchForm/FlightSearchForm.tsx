@@ -1,13 +1,13 @@
 import { styled } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import { memo, useState } from "react";
-import { DateInput } from "../components/DateCell";
+import { DateInput } from "../../common/DateCell";
 import {
   FormButton,
   StyledFormContainer,
   StyledFormHeader,
   StyledFormInputsWrapper
-} from "../components/StyledComponents";
+} from "../../common/StyledComponents";
 
 interface FlightSearchFormProps {
   getData: (cityCode: string, departureDate: string) => void;

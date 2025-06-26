@@ -4,10 +4,10 @@ import {
   verticalListSortingStrategy
 } from "@dnd-kit/sortable";
 import { memo, useMemo } from 'react';
-import { TableData } from '../types/tableTypes';
-import { DateInput } from "./DateCell";
-import { DraggableTableRow } from "./DraggableTableRow";
-import { TableCell } from './StyledComponents';
+import { TableData } from '../../../types/tableTypes';
+import { DateInput } from "../../common/DateCell";
+import { DraggableTableRow } from "./DraggableTableRow/DraggableTableRow";
+import { TableCell } from '../../common/StyledComponents';
 
 interface FlightTableBodyProps {
   activeId?: string | null,

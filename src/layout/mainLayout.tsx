@@ -1,5 +1,5 @@
 import { Container } from "@mui/material";
-import { StyledContainer, StyledMainHeader } from "../components/StyledComponents";
+import { StyledContainer, StyledMainHeader } from "../components/common/StyledComponents";
 
 interface MainLayoutProps {
   children?: React.ReactNode;

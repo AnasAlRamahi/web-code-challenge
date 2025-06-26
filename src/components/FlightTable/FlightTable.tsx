@@ -5,14 +5,14 @@ import {
 import { restrictToVerticalAxis } from "@dnd-kit/modifiers";
 import { TableContainer } from "@mui/material";
 import { useMemo } from "react";
-import { useTableData } from "../hooks/useTableData";
-import { useTableDnD } from "../hooks/useTableDnD";
-import { useTablePagination } from "../hooks/useTablePagination";
-import { FlightSearchForm } from "./FlightSearchForm";
-import { FlightTableBody } from "./FlightTableBody";
-import { FlightTableHeader } from "./FlightTableHeader";
-import { FlightTablePagination } from "./FlightTablePagination";
-import { StyledTable } from "./StyledComponents";
+import { useTableData } from "../../hooks/useTableData";
+import { useTableDnD } from "../../hooks/useTableDnD";
+import { useTablePagination } from "../../hooks/useTablePagination";
+import { FlightSearchForm } from "./FlightSearchForm/FlightSearchForm";
+import { FlightTableBody } from "./FlightTableBody/FlightTableBody";
+import { FlightTableHeader } from "./FlightTableHeader/FlightTableHeader";
+import { FlightTablePagination } from "./FlightTablePagination/FlightTablePagination";
+import { StyledTable } from "../common/StyledComponents";
 
 export const FlightTable = () => {
   const { pagination } = useTablePagination();
